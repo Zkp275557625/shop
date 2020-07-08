@@ -40,7 +40,7 @@ public class UserController {
      * @param phone
      * @return
      */
-    @RequestMapping(name = "/user/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/register", name = "注册", method = RequestMethod.POST)
     @ResponseBody
     public Response<User> register(@RequestParam(name = "userName") String userName,
                                    @RequestParam(name = "password") String password,
@@ -73,7 +73,7 @@ public class UserController {
      * @param phone
      * @return
      */
-    @RequestMapping(value = "/user/getUserInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/getUserInfo", name = "获取用户信息", method = RequestMethod.GET)
     @ResponseBody
     public Response<User> getUserInfo(@RequestParam(name = "phone") String phone) {
         Response<User> response = new Response<>();
@@ -99,7 +99,7 @@ public class UserController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/user/updateUserInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/updateUserInfo", name = "更新用户信息", method = RequestMethod.POST)
     @ResponseBody
     public Response<User> updateUserInfo(@RequestParam(name = "phone") String phone,
                                          @RequestParam(name = "userName") String userName,
@@ -146,7 +146,7 @@ public class UserController {
      * @param httpServletResponse
      * @return
      */
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/login", name = "登录", method = RequestMethod.POST)
     @ResponseBody
     public Response<User> login(@RequestParam(name = "password") String password,
                                 @RequestParam(name = "phone") String phone,
@@ -188,7 +188,7 @@ public class UserController {
      * @param httpServletResponse
      * @return
      */
-    @RequestMapping(value = "/user/logout", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/logout", name = "退出登录", method = RequestMethod.POST)
     @ResponseBody
     public Response<String> logout(HttpServletRequest httpServletRequest,
                                    HttpServletResponse httpServletResponse) {

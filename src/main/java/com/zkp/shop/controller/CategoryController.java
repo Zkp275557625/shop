@@ -31,7 +31,7 @@ public class CategoryController {
      * @param categoryType
      * @return
      */
-    @RequestMapping(value = "/category/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/category/add", name = "添加分类", method = RequestMethod.POST)
     @ResponseBody
     public Response<Category> addCategory(@RequestParam(name = "categoryName") String categoryName,
                                           @RequestParam(name = "categoryType") Integer categoryType) {
@@ -55,7 +55,7 @@ public class CategoryController {
      *
      * @return
      */
-    @RequestMapping(value = "/category/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/category/list", name = "获取所有商品分类", method = RequestMethod.GET)
     @ResponseBody
     public Response<List<Category>> getCategories() {
         Response<List<Category>> response = new Response<>();
@@ -76,7 +76,7 @@ public class CategoryController {
      * @param categoryType
      * @return
      */
-    @RequestMapping(value = "/category/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/category/update", name = "更新商品分类", method = RequestMethod.POST)
     @ResponseBody
     public Response<Category> updateCategory(@RequestParam(name = "categoryId") String categoryId,
                                              @RequestParam(name = "categoryName") String categoryName,

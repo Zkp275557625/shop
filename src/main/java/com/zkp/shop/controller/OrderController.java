@@ -55,7 +55,7 @@ public class OrderController {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    @RequestMapping(value = "/order/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/order/create", name = "创建订单", method = RequestMethod.POST)
     @ResponseBody
     @Transactional(rollbackFor = Exception.class)
     public Response<OrderDto> createOrder(@RequestParam(name = "orderDto") OrderDto orderDto,
@@ -192,7 +192,7 @@ public class OrderController {
         return response;
     }
 
-    @RequestMapping(value = "/order/cancel", method = RequestMethod.POST)
+    @RequestMapping(value = "/order/cancel", name = "取消订单", method = RequestMethod.POST)
     @ResponseBody
     public Response<OrderDto> cancelOrder(@RequestParam(name = "phone") String phone,
                                           @RequestParam(name = "orderId") String orderId,
@@ -247,7 +247,7 @@ public class OrderController {
         return response;
     }
 
-    @RequestMapping(value = "/order/finish", method = RequestMethod.POST)
+    @RequestMapping(value = "/order/finish", name = "完成订单", method = RequestMethod.POST)
     @ResponseBody
     public Response<OrderDto> finishOrder(@RequestParam(name = "phone") String phone,
                                           @RequestParam(name = "orderId") String orderId,
@@ -324,7 +324,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/list", name = "获取该用户的所有订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> list(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                          @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -383,7 +383,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/paiedlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/paiedlist", name = "获取该用户的所有已支付的订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listPaied(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                               @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -440,7 +440,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/unpaiedlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/unpaiedlist", name = "获取该用户的所有未支付的订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listUnPaied(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                 @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -497,7 +497,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/neworderlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/neworderlist", name = "获取该用户的所有新订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listNewOrder(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                  @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -554,7 +554,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/finishedlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/finishedlist", name = "获取该用户的所有已完成订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listFinishedOrder(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -611,7 +611,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/canceledlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/canceledlist", name = "获取该用户的所有已取消订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listCanceledOrder(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -668,7 +668,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/commentlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/commentlist", name = "获取该用户的所有已评论订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listCommentedOrder(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -725,7 +725,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/order/uncommentlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/uncommentlist", name = "获取该用户的所有已评论订单列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<OrderDto>> listUnCommentedOrder(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                          @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -783,7 +783,7 @@ public class OrderController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(name = "/order/comment")
+    @RequestMapping(value = "/order/comment", name = "提交评论", method = RequestMethod.POST)
     @ResponseBody
     @Transactional(rollbackFor = Exception.class)
     public Response<OrderDto> comment(@RequestParam(name = "orderDto") OrderDto orderDto,

@@ -42,7 +42,7 @@ public class DeliveruAddressController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/address/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/address/create", name = "创建收货地址", method = RequestMethod.POST)
     @ResponseBody
     public Response<DeliveryAddress> create(@RequestParam(name = "ownerPhone") String ownerPhone,
                                             @RequestParam(name = "receiverPhone") String receiverPhone,
@@ -88,7 +88,7 @@ public class DeliveruAddressController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/address/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/address/list", name = "获取某个用户所有的收货地址", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<DeliveryAddress>> create(@RequestParam(name = "ownerPhone") String ownerPhone,
                                                   @RequestParam(value = "page", defaultValue = "0") Integer page,
@@ -134,7 +134,7 @@ public class DeliveruAddressController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/address/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/address/update", name = "修改收货地址", method = RequestMethod.POST)
     @ResponseBody
     public Response<DeliveryAddress> update(@RequestParam(name = "id") String id,
                                             @RequestParam(name = "ownerPhone") String ownerPhone,
@@ -188,7 +188,7 @@ public class DeliveruAddressController {
      * @param httpServletRequest
      * @return
      */
-    @RequestMapping(value = "/address/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/address/delete", name = "删除收货地址", method = RequestMethod.POST)
     @ResponseBody
     public Response<String> delete(@RequestParam(name = "id") String id,
                                    @RequestParam(name = "ownerPhone") String ownerPhone,

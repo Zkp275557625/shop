@@ -39,7 +39,7 @@ public class ProductController {
      * @param categoryType
      * @return
      */
-    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/add", name = "添加商品入库", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> addProduct(@RequestParam(name = "productName") String productName,
                                         @RequestParam(name = "productPrice") BigDecimal productPrice,
@@ -77,7 +77,7 @@ public class ProductController {
      * @param categoryType
      * @return
      */
-    @RequestMapping(value = "/product/updateProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/updateProduct", name = "更新商品信息", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> updateProduct(@RequestParam(name = "productId") String productId,
                                            @RequestParam(name = "productName") String productName,
@@ -114,7 +114,7 @@ public class ProductController {
      * @param productId
      * @return
      */
-    @RequestMapping(value = "/product/onSale", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/onSale", name = "更改商品状态 下架-->在售", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> onSale(@RequestParam(name = "productId") String productId) {
 
@@ -145,7 +145,7 @@ public class ProductController {
      * @param productId
      * @return
      */
-    @RequestMapping(value = "/product/offSale", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/offSale", name = "更改商品状态 在售-->下架", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> offSale(@RequestParam(name = "productId") String productId) {
         Response<Product> response = new Response<>();
@@ -176,7 +176,7 @@ public class ProductController {
      * @param size
      * @return
      */
-    @RequestMapping(value = "/product/getProductList", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/getProductList", name = "获取商品列表(包括在售和下架的商品，分页显示)", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<Product>> getProductList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                   @RequestParam(value = "size", defaultValue = "10") Integer size) {
@@ -198,7 +198,7 @@ public class ProductController {
      * @param size
      * @return
      */
-    @RequestMapping(value = "/product/getOnSaleList", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/getOnSaleList", name = "获取所有在售商品列表", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<Product>> getOnSaleList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                  @RequestParam(value = "size", defaultValue = "10") Integer size) {
@@ -220,7 +220,7 @@ public class ProductController {
      * @param size
      * @return
      */
-    @RequestMapping(value = "/product/getOffSaleList", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/getOffSaleList", name = "获取所有下架商品", method = RequestMethod.GET)
     @ResponseBody
     public Response<Page<Product>> getOffSaleList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                   @RequestParam(value = "size", defaultValue = "10") Integer size) {
@@ -242,7 +242,7 @@ public class ProductController {
      * @param number
      * @return
      */
-    @RequestMapping(value = "/product/increaseStock", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/increaseStock", name = "增加库存", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> increaseStock(@RequestParam(name = "productId") String productId,
                                            @RequestParam(name = "number") Integer number) {
@@ -265,13 +265,13 @@ public class ProductController {
     }
 
     /**
-     * 增加库存
+     * 减少库存
      *
      * @param productId
      * @param number
      * @return
      */
-    @RequestMapping(value = "/product/decreaseStock", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/decreaseStock", name = "减少库存", method = RequestMethod.POST)
     @ResponseBody
     public Response<Product> decreaseStock(@RequestParam(name = "productId") String productId,
                                            @RequestParam(name = "number") Integer number) {
